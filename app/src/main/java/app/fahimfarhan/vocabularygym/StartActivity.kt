@@ -10,7 +10,7 @@ import app.fahimfarhan.vocabularygym.viewmodel.GreViewModel
 
 class StartActivity : AppCompatActivity() {
 
-  var greViewModel: GreViewModel? = null;
+  lateinit var greViewModel: GreViewModel;
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -23,6 +23,10 @@ class StartActivity : AppCompatActivity() {
     ).get(GreViewModel::class.java);
 
     val tv: TextView = findViewById(R.id.tv);
-    tv.text = greViewModel?.greModelsList.toString();
+    val btn: TextView = findViewById(R.id.button);
+    btn.setOnClickListener {
+      tv.text = greViewModel.greModelsList.toString();
+    }
+
   }
 }
