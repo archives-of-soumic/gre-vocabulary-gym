@@ -72,12 +72,12 @@ class GreViewHolder: RecyclerView.ViewHolder {
     this.option4.setBackgroundColor(radioButtonColor);
 
     this.submit.setOnClickListener{  submitTextView ->
-      solutionContainer.visibility = View.VISIBLE;
       val checkedRadioButtonId = radioGroup.checkedRadioButtonId;
       val radioButton: RadioButton = itemView.findViewById(checkedRadioButtonId);
       val selectedMeaning: String = radioButton.text.toString();
 
       if( actualGreMeaning.equals(selectedMeaning) ) {
+        solutionContainer.visibility = View.VISIBLE;
         val greenColor = getColor(R.color.colorPrimary);
         radioButton.setBackgroundColor(greenColor);
       }else{
