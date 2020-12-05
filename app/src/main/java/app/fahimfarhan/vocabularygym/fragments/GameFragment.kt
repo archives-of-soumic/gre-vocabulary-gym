@@ -50,8 +50,15 @@ class GameFragment: Fragment {
     recyclerView.adapter = this.greAdapter;
 
     val greViewModel = (requireActivity() as StartActivity).greViewModel;
-    greViewModel.greModelsList?.observe(viewLifecycleOwner, { someList -> greAdapter.submit(someList); })
-    greViewModel.getGreModelsInBackground();
+    // greViewModel.greModelsList?.observe(viewLifecycleOwner, { someList -> greAdapter.submit(someList); })
+    val onQueryFinished: (somelist: List<GreModel>) -> Unit = {
+      somelist ->
+      activity?.runOnUiThread {
+        greAdapter.submit(somelist);
+      }
+    }
+
+    greViewModel.getGreModelsInBackground(onQueryFinished);
 
   }
   // Public methods

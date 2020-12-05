@@ -13,14 +13,14 @@ class GreViewModel: AndroidViewModel {
   var initialChars: ArrayList<Int> = ArrayList();
 
   private val greRepository: GreRepository?;
-  var greModelsList: MutableLiveData<List<GreModel>>? = null;
+  var greModelsList: List<GreModel>?;
 
   constructor(application: Application):super(application) {
     this.greRepository = GreRepository(context = application);
     this.greModelsList = this.greRepository.greModelsList;
   }
 
-  fun getGreModelsInBackground() {
-    this.greRepository?.getAllGreModelsWith(initialChars = initialChars, difficultyLevels = difficultyLevels);
+  fun getGreModelsInBackground(onQueryFinished: (somelist: List<GreModel>) -> Unit) {
+    this.greRepository?.getAllGreModelsWith(initialChars = initialChars, difficultyLevels = difficultyLevels, onQueryFinished);
   }
 }

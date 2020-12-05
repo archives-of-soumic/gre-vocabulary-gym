@@ -20,7 +20,7 @@ class GreRepository {
   // Variables
   private var greDao: GreDatabaseDao;
   // var greModelsList: ArrayList<GreModel> = ArrayList();
-  var greModelsList: MutableLiveData<List<GreModel>>? = null;
+  var greModelsList: List<GreModel>? = null;
 
   // Constructors
   constructor(context: Context) {
@@ -67,11 +67,20 @@ class GreRepository {
     }
   }
 
-  fun getAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>) {
+  fun getAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, onQueryFinished: (somelist: List<GreModel>) -> Unit) {
+    for(i in initialChars) {
+      Log.e(TAG, "initial chars "+i);
+    }
+    for(i in difficultyLevels) {
+      Log.e(TAG, "difficulty levels "+i);
+    }
+
+
     Executors.newSingleThreadExecutor().execute {
-      val temp: List<GreModel> = greDao.selectAllGreModelsWith(initialChars = initialChars,
+      this.greModelsList = greDao.selectAllGreModelsWith(initialChars = initialChars,
           difficultyLevels = difficultyLevels);
-      this.greModelsList?.value = temp;
+      Log.e(TAG, "this.greModelsList.size "+this.greModelsList?.size);
+      onQueryFinished.invoke(this.greModelsList!!);
     }
   }
 
