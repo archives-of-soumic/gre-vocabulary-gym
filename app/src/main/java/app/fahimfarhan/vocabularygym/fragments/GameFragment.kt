@@ -14,6 +14,7 @@ import app.fahimfarhan.vocabularygym.StartActivity
 import app.fahimfarhan.vocabularygym.database.GreModel
 import app.fahimfarhan.vocabularygym.recyclerviews.GreAdapter
 import kotlinx.android.synthetic.main.fragment_game.*
+import java.util.*
 
 
 class GameFragment: Fragment {
@@ -56,6 +57,7 @@ class GameFragment: Fragment {
     // greViewModel.greModelsList?.observe(viewLifecycleOwner, { someList -> greAdapter.submit(someList); })
     val onQueryFinished: (somelist: List<GreModel>) -> Unit = { somelist ->
       activity?.runOnUiThread {
+        Collections.shuffle(somelist);
         greAdapter.submit(somelist);
       }
     }
