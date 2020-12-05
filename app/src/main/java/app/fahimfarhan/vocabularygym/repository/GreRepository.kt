@@ -68,14 +68,6 @@ class GreRepository {
   }
 
   fun getAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, onQueryFinished: (somelist: List<GreModel>) -> Unit) {
-    for(i in initialChars) {
-      Log.e(TAG, "initial chars "+i);
-    }
-    for(i in difficultyLevels) {
-      Log.e(TAG, "difficulty levels "+i);
-    }
-
-
     Executors.newSingleThreadExecutor().execute {
       this.greModelsList = greDao.selectAllGreModelsWith(initialChars = initialChars,
           difficultyLevels = difficultyLevels);
