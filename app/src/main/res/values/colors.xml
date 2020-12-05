@@ -14,7 +14,10 @@
   <color name="colorPrimary">#5DAC81</color>
   <color name="colorPrimaryDark">#4F916D</color>
   <color name="colorAccent">#5DAC81</color>
+  <color name="colorRadioButton">#805DAC81</color>
   <color name="background">#1C1C1C</color>
   <color name="solidBlack">#000000</color>
   <color name="solidWhite">#FFFFFF</color>
+  <color name="lightRed">#80FF0000</color>
+
 </resources>

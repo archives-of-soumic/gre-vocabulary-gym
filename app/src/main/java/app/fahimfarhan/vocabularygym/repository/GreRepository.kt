@@ -3,6 +3,8 @@ package app.fahimfarhan.vocabularygym.repository
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import app.fahimfarhan.vocabularygym.Constants
 import app.fahimfarhan.vocabularygym.database.GreDatabase
 import app.fahimfarhan.vocabularygym.database.GreDatabaseDao
@@ -17,7 +19,8 @@ class GreRepository {
   }
   // Variables
   private var greDao: GreDatabaseDao;
-  var greModelsList: ArrayList<GreModel> = ArrayList();
+  // var greModelsList: ArrayList<GreModel> = ArrayList();
+  var greModelsList: MutableLiveData<List<GreModel>>? = null;
 
   // Constructors
   constructor(context: Context) {
@@ -37,24 +40,6 @@ class GreRepository {
       insertAllGreModels(advancedGreWords);
 
       saveIsFirstTImeInPreference(context, false);
-    }
-    Log.e(TAG, "3");
-    this.greModelsList = ArrayList();
-    Executors.newSingleThreadExecutor().execute {
-      val initChars: ArrayList<Int> = ArrayList();
-      initChars.add(118);
-      initChars.add(122);
-
-      val difficultyLEvel = ArrayList<Int>();
-      difficultyLEvel.add(3);
-      greModelsList.addAll(greDao.selectAllGreModelsWith(initChars, difficultyLEvel));
-      // Log.e(TAG, greModelsList.toString());
-      Log.e(TAG, "greModelsList.size = "+greModelsList.size);
-      for( i in greModelsList) {
-        Log.e(TAG, i.greWord);
-      }
-
-      Log.e(TAG, "4");
     }
   }
 
@@ -81,4 +66,13 @@ class GreRepository {
       greDao.insertAllGreModels(greModelList = greList);
     }
   }
+
+  fun getAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>) {
+    Executors.newSingleThreadExecutor().execute {
+      val temp: List<GreModel> = greDao.selectAllGreModelsWith(initialChars = initialChars,
+          difficultyLevels = difficultyLevels);
+      this.greModelsList?.value = temp;
+    }
+  }
+
 }

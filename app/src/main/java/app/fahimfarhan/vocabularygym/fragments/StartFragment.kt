@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import app.fahimfarhan.vocabularygym.R
+import app.fahimfarhan.vocabularygym.StartActivity
 import app.fahimfarhan.vocabularygym.utilities.Accessories
 import app.fahimfarhan.vocabularygym.viewmodel.GreViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -57,8 +58,10 @@ class StartFragment: Fragment {
       initDifficultyLevels();
       initInitialCharacters();
 
+      val startActivity: StartActivity = requireActivity() as StartActivity;
+      startActivity.greViewModel.initialChars = initialChars;
+      startActivity.greViewModel.difficultyLevels = difficultyLevels;
       val gameFragment: GameFragment = GameFragment();
-      // todo: pass values using setters
 
       Accessories.initFragment(
         requireActivity().supportFragmentManager, R.id.baseFrameLayout, gameFragment, GameFragment.TAG);

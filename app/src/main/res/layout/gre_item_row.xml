@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <TextView
+    android:id="@+id/greWord"
+    android:text="Foo"
+    android:fontFamily="@font/main"
+    android:textSize="@dimen/textSizeHeading"
+    android:textColor="@color/solidBlack"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/questionContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/greWord"
+    >
+    <RadioGroup
+      android:id="@+id/radioGroup"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingStart="50dp"
+      android:paddingEnd="50dp"
+      android:gravity="center"
+      >
+
+      <RadioButton
+        android:id="@+id/option1"
+        tools:text="option 1"
+        android:background="@color/colorRadioButton"
+        android:textSize="@dimen/textSizePrimary"
+        android:fontFamily="@font/main"
+        android:textColor="@color/solidBlack"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+      <RadioButton
+        android:id="@+id/option2"
+        tools:text="option 2"
+        android:background="@color/colorRadioButton"
+        android:textSize="@dimen/textSizePrimary"
+        android:fontFamily="@font/main"
+        android:textColor="@color/solidBlack"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+      <RadioButton
+        android:id="@+id/option3"
+        tools:text="option 3"
+        android:background="@color/colorRadioButton"
+        android:textSize="@dimen/textSizePrimary"
+        android:fontFamily="@font/main"
+        android:textColor="@color/solidBlack"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+      <RadioButton
+        android:id="@+id/option4"
+        tools:text="option 4"
+        android:background="@color/colorRadioButton"
+        android:textSize="@dimen/textSizePrimary"
+        android:fontFamily="@font/main"
+        android:textColor="@color/solidBlack"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/solutionContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_regular"
+    app:layout_constraintTop_toBottomOf="@id/questionContainer"
+    app:layout_constraintBottom_toTopOf="@id/submit"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
+
+
+    <TextView
+      android:id="@+id/greMeaning"
+      tools:text="bar"
+      android:textSize="@dimen/textSizePrimary"
+      android:fontFamily="@font/main"
+      android:textColor="@color/solidBlack"
+      app:layout_constraintBottom_toTopOf="@id/grePartOfSpeech"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+    <TextView
+      android:id="@+id/grePartOfSpeech"
+      tools:text="Verb"
+      android:textSize="@dimen/textSizePrimary"
+      android:fontFamily="@font/main"
+      android:textColor="@color/solidBlack"
+      app:layout_constraintBottom_toTopOf="@id/greExample"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+    <TextView
+      android:id="@+id/greExample"
+      tools:text="A quick brown fox jumped over the lazy dog"
+      android:textSize="@dimen/textSizePrimary"
+      android:fontFamily="@font/main"
+      android:textColor="@color/solidBlack"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <TextView
+    android:id="@+id/submit"
+    android:layout_marginStart="50dp"
+    android:layout_marginEnd="50dp"
+    android:layout_marginBottom="@dimen/padding_regular"
+    android:background="@color/colorPrimary"
+    android:textSize="@dimen/textSizePrimary"
+    android:fontFamily="@font/main"
+    android:textColor="@color/solidWhite"
+    android:text="Submit"
+    android:gravity="center"
+    android:paddingStart="@dimen/padding_regular"
+    android:paddingEnd="@dimen/padding_regular"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_small"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
