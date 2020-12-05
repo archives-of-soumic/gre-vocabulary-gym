@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.utilities.Accessories
+import app.fahimfarhan.vocabularygym.viewmodel.GreViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_start.*
 import java.util.*
@@ -30,6 +31,7 @@ class StartFragment: Fragment {
   Bundle?): View? {
     // return super.onCreateView(inflater, container, savedInstanceState)
     this.fragmentRootView = inflater.inflate(R.layout.fragment_start, container, false);
+    this.fragmentRootView.setOnClickListener { /* empty click listener to prevent click propagation*/ };
     return this.fragmentRootView;
   }
 

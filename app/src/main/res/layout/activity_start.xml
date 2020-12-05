@@ -7,24 +7,41 @@
   tools:context=".StartActivity">
 
   <TextView
-  android:id="@+id/tv"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  app:layout_constraintBottom_toBottomOf="parent"
-  app:layout_constraintLeft_toLeftOf="parent"
-  app:layout_constraintRight_toRightOf="parent"
-  app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/btnGrePractice"
+    android:text="Practice GRE vocabularies"
+    android:textColor="@color/solidWhite"
+    android:fontFamily="@font/main"
+    android:padding="8dp"
+    android:paddingStart="@dimen/padding_regular"
+    android:paddingEnd="@dimen/padding_regular"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 
   <TextView
-      android:id="@+id/button"
-      android:text="click me"
-      android:padding="8dp"
-      android:background="#FFFF00"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
+    android:id="@+id/btnAnalytics"
+    android:text="Analytics"
+    android:textColor="@color/solidWhite"
+    android:fontFamily="@font/main"
+    android:padding="8dp"
+    android:gravity="center"
+    android:background="@color/colorPrimary"
+    android:layout_marginTop="@dimen/padding_regular"
+    app:layout_constraintStart_toStartOf="@id/btnGrePractice"
+    app:layout_constraintEnd_toEndOf="@id/btnGrePractice"
+    app:layout_constraintTop_toBottomOf="@id/btnGrePractice"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"/>
+
+
+
+  <FrameLayout
+    android:id="@+id/startFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,11 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import app.fahimfarhan.vocabularygym.fragments.StartFragment
+import app.fahimfarhan.vocabularygym.utilities.Accessories
 import app.fahimfarhan.vocabularygym.viewmodel.GreViewModel
+import kotlinx.android.synthetic.main.activity_start.*
+
 
 class StartActivity : AppCompatActivity() {
 
@@ -22,10 +26,13 @@ class StartActivity : AppCompatActivity() {
         this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)
     ).get(GreViewModel::class.java);
 
-    val tv: TextView = findViewById(R.id.tv);
-    val btn: TextView = findViewById(R.id.button);
-    btn.setOnClickListener {
-      tv.text = greViewModel.greModelsList.toString();
+    btnAnalytics.setOnClickListener {
+      // todo: Finish it later
+    };
+
+    btnGrePractice.setOnClickListener {
+      val startFragment: StartFragment = StartFragment();
+      Accessories.initFragment(supportFragmentManager, startFrameLayout.id, startFragment, StartFragment.TAG);
     }
 
   }
