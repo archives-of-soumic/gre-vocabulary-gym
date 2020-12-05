@@ -28,12 +28,12 @@ class Accessories {
     fun getGreModel(input: String, difficultyLevel: Int): GreModel {
       val words: List<String> = input.split("|"); // input.split("\\|"); this is for java :/
       var outPut: GreModel = GreModel();
-      val initChar: Char = words[0][0];
+      val initCharAsInt: Int = words[0][0] - 'a';
       outPut.greWord = words[0];
       outPut.greMeaning = words[1];
       outPut.grePartOfSpeech = words[2];
       outPut.exampleSentence = words[3];
-      outPut.initialChar = initChar;
+      outPut.initialChar = initCharAsInt;
       outPut.difficultyLevel = difficultyLevel;
       return outPut;
     }

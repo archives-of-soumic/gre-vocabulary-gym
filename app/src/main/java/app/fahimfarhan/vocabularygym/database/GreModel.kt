@@ -18,7 +18,7 @@ data class GreModel(
   @ColumnInfo(name = "example_sentence")
   var exampleSentence: String = "",
   @ColumnInfo(name = "initial_character")
-  var initialChar: Char = ' ',
+  var initialChar: Int = -1,
   @ColumnInfo(name = "difficulty_level")
   var difficultyLevel: Int = 0
 )

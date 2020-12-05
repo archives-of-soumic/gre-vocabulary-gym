@@ -2,6 +2,7 @@ package app.fahimfarhan.vocabularygym.repository
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import app.fahimfarhan.vocabularygym.Constants
 import app.fahimfarhan.vocabularygym.database.GreDatabase
 import app.fahimfarhan.vocabularygym.database.GreDatabaseDao
@@ -20,11 +21,13 @@ class GreRepository {
 
   // Constructors
   constructor(context: Context) {
+    Log.e(TAG, "1");
     val db: GreDatabase = GreDatabase.getInstance(context);
     this.greDao = db.greDatabaseDao;
 
     val isFirstTime: Boolean = isFirstTimeFromPreference(context);
     if(isFirstTime) {
+      Log.e(TAG, "2");
       val commonGreWords = Accessories.readFromCsv(context, "magoosh_1_common.csv", 1);
       val basicGreWords = Accessories.readFromCsv(context, "magoosh_2_basic.csv", 2);
       val advancedGreWords = Accessories.readFromCsv(context, "magoosh_3_advanced.csv", 3);
@@ -35,9 +38,20 @@ class GreRepository {
 
       saveIsFirstTImeInPreference(context, false);
     }
+    Log.e(TAG, "3");
     this.greModelsList = ArrayList();
     Executors.newSingleThreadExecutor().execute {
-      greModelsList.addAll(greDao.selectAllGreModels());
+      val initChars: ArrayList<Int> = ArrayList();
+      initChars.add(118);
+      initChars.add(122);
+
+      val difficultyLEvel = ArrayList<Int>();
+      difficultyLEvel.add(1); difficultyLEvel.add(2);
+      greModelsList.addAll(greDao.selectAllGreModelsWith(initChars, difficultyLEvel));
+      Log.e(TAG, greModelsList.toString());
+      Log.e(TAG, "greModelsList.size = "+greModelsList.size);
+
+      Log.e(TAG, "4");
     }
   }
 
