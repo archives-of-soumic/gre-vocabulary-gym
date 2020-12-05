@@ -7,7 +7,7 @@ import app.fahimfarhan.vocabularygym.Constants
 import app.fahimfarhan.vocabularygym.database.GreDatabase
 import app.fahimfarhan.vocabularygym.database.GreDatabaseDao
 import app.fahimfarhan.vocabularygym.database.GreModel
-import app.fahimfarhan.vocabularygym.gadgets.Accessories
+import app.fahimfarhan.vocabularygym.utilities.Accessories
 import java.util.concurrent.Executors
 
 class GreRepository {
@@ -46,10 +46,13 @@ class GreRepository {
       initChars.add(122);
 
       val difficultyLEvel = ArrayList<Int>();
-      difficultyLEvel.add(1); difficultyLEvel.add(2);
+      difficultyLEvel.add(3);
       greModelsList.addAll(greDao.selectAllGreModelsWith(initChars, difficultyLEvel));
-      Log.e(TAG, greModelsList.toString());
+      // Log.e(TAG, greModelsList.toString());
       Log.e(TAG, "greModelsList.size = "+greModelsList.size);
+      for( i in greModelsList) {
+        Log.e(TAG, i.greWord);
+      }
 
       Log.e(TAG, "4");
     }

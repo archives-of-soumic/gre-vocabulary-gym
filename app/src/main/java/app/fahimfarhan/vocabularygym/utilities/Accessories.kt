@@ -1,7 +1,8 @@
-package app.fahimfarhan.vocabularygym.gadgets
+package app.fahimfarhan.vocabularygym.utilities
 
 import android.content.Context
-import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import app.fahimfarhan.vocabularygym.database.GreModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -36,6 +37,13 @@ class Accessories {
       outPut.initialChar = initCharAsInt;
       outPut.difficultyLevel = difficultyLevel;
       return outPut;
+    }
+
+    fun initFragment(fragmentManager: FragmentManager, baseContainer: Int, fragment: Fragment, tag: String ) {
+      fragmentManager.beginTransaction()
+        .add(baseContainer, fragment, tag)
+        .addToBackStack(tag)
+        .commit();
     }
   }
 }

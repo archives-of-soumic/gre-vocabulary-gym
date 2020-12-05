@@ -13,7 +13,12 @@ interface GreDatabaseDao {
   @Query("SELECT * FROM gre_vocabulary_table")
   fun selectAllGreModels(): List<GreModel>;
 
-  @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels)")
-  fun selectAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>): List<GreModel>;
+  /***
+   * @brief: the result is 0 based indexed. So start = 0, limit = 2 means {word[0], word[1]]} will
+   *  be returned
+   */
+  @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels) LIMIT :start, :limit")
+  fun selectAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, start: Int=0,
+                             limit: Int=10): List<GreModel>;
 
 }
