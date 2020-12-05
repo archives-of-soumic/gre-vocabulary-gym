@@ -45,7 +45,7 @@ class GreAdapter : RecyclerView.Adapter<GreViewHolder>{
 
     Collections.shuffle(choices);
 
-    holder.bindView(greModelsList[dataPosition], choices, actualGreMeaning);
+    holder.bindView(greModelsList[dataPosition], choices, actualGreMeaning, (dataPosition.toString()+" / " + itemCount.toString()) );
   }
 
   override fun getItemCount(): Int {

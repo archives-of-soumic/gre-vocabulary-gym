@@ -26,6 +26,7 @@ class GreViewHolder: RecyclerView.ViewHolder {
   var option4: RadioButton;
 
   var submit: TextView;
+  var pageNumer: TextView;
 
   var actualGreMeaning: String = "";
 
@@ -45,9 +46,12 @@ class GreViewHolder: RecyclerView.ViewHolder {
     this.option4 = itemView.findViewById(R.id.option4);
 
     this.submit = itemView.findViewById(R.id.submit);
+
+    this.pageNumer = itemView.findViewById(R.id.pageNumer);
   }
 
-  fun bindView(greModel: GreModel, choice: ArrayList<String>, actualGreMeaning: String) {
+  fun bindView(greModel: GreModel, choice: ArrayList<String>, actualGreMeaning: String, currPageNumber: String) {
+    this.pageNumer.text = currPageNumber;
     this.greWord.text = greModel.greWord;
     this.greMeaning.text = greModel.greMeaning;
     this.grePartOfSpeech.text = greModel.grePartOfSpeech;
@@ -57,6 +61,15 @@ class GreViewHolder: RecyclerView.ViewHolder {
     this.option2.text = choice[1];
     this.option3.text = choice[2];
     this.option4.text = choice[3];
+
+    this.radioGroup.clearCheck();
+    this.solutionContainer.visibility = View.INVISIBLE;
+
+    val radioButtonColor: Int = getColor(R.color.colorRadioButton);
+    this.option1.setBackgroundColor(radioButtonColor);
+    this.option2.setBackgroundColor(radioButtonColor);
+    this.option3.setBackgroundColor(radioButtonColor);
+    this.option4.setBackgroundColor(radioButtonColor);
 
     this.submit.setOnClickListener{  submitTextView ->
       solutionContainer.visibility = View.VISIBLE;
