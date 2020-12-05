@@ -1,5 +1,6 @@
 package app.fahimfarhan.vocabularygym.recyclerviews
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -64,14 +65,21 @@ class GreViewHolder: RecyclerView.ViewHolder {
       val selectedMeaning: String = radioButton.text.toString();
 
       if( actualGreMeaning.equals(selectedMeaning) ) {
-        // todo: logic
-        val redColor = itemView.context.resources.getColor(R.color.lightRed);
-        radioButton.setBackgroundColor(redColor);
-      }else{
-        // todo: logic
-        val greenColor = itemView.context.resources.getColor(R.color.colorPrimary);
+        val greenColor = getColor(R.color.colorPrimary);
         radioButton.setBackgroundColor(greenColor);
+      }else{
+        val redColor = getColor(R.color.lightRed);
+        radioButton.setBackgroundColor(redColor);
       }
     };
   }
+
+  private fun getColor(colorResId: Int): Int {
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+      return itemView.context.resources.getColor(colorResId, null);
+    } else {
+      return itemView.context.resources.getColor(colorResId);
+    };
+  }
+
 }

@@ -30,18 +30,18 @@ class GreAdapter : RecyclerView.Adapter<GreViewHolder>{
     val dataPosition = uiPosition;
     val choices: ArrayList<String> = ArrayList();
 
-    val actualGreMeaning: String = greModelsList[dataPosition].greWord;
+    val actualGreMeaning: String = greModelsList[dataPosition].greMeaning;
 
     choices.add(actualGreMeaning);
 
     val r1 = Random.nextInt(itemCount);
-    choices.add(greModelsList[r1].greWord);
+    choices.add(greModelsList[r1].greMeaning);
 
     val r2 = Random.nextInt(itemCount);
-    choices.add(greModelsList[r2].greWord);
+    choices.add(greModelsList[r2].greMeaning);
 
     val r3 = Random.nextInt(itemCount);
-    choices.add(greModelsList[r3].greWord);
+    choices.add(greModelsList[r3].greMeaning);
 
     Collections.shuffle(choices);
 
