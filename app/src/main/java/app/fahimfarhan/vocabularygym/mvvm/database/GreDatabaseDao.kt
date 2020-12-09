@@ -24,4 +24,6 @@ interface GreDatabaseDao {
   @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels)")
   fun selectAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>): List<GreModel>;
 
+  @Query("SELECT gre_meaning FROM gre_vocabulary_table ORDER BY Random() Limit 100")
+  fun selectRandomMeanings(): List<String>;
 }

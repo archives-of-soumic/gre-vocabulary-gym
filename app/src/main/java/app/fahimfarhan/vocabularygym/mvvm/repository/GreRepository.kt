@@ -17,8 +17,7 @@ class GreRepository {
   }
   // Variables
   private var greDao: GreDatabaseDao;
-  // var greModelsList: ArrayList<GreModel> = ArrayList();
-  var greModelsList: List<GreModel>? = null;
+  var randomMeanings : ArrayList<String> = ArrayList();
 
   // Constructors
   constructor(context: Context) {
@@ -37,7 +36,12 @@ class GreRepository {
       insertAllGreModels(basicGreWords);
       insertAllGreModels(advancedGreWords);
 
-      saveIsFirstTImeInPreference(context, false);
+      saveIsFirstTimeInPreference(context, false);
+    }
+
+    Executors.newSingleThreadExecutor().execute {
+      val temp = greDao.selectRandomMeanings();
+      randomMeanings.addAll(temp);
     }
   }
 
@@ -48,7 +52,7 @@ class GreRepository {
     return isFirstTime;
   }
 
-  private fun saveIsFirstTImeInPreference(context: Context, isFirstTime: Boolean) {
+  private fun saveIsFirstTimeInPreference(context: Context, isFirstTime: Boolean) {
     val pref = context.getSharedPreferences(Constants.GRE_SHARED_PREFERENCE, Context.MODE_PRIVATE);
     val editor: SharedPreferences.Editor = pref.edit();
     editor.putBoolean(Constants.IS_FIRST_TIME, isFirstTime);
@@ -62,15 +66,6 @@ class GreRepository {
   fun insertAllGreModels(greList: ArrayList<GreModel>) {
     GreDatabase.databaseWriteExecutor.execute{
       greDao.insertAllGreModels(greModelList = greList);
-    }
-  }
-
-  fun getAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, onQueryFinished: (somelist: List<GreModel>) -> Unit) {
-    Executors.newSingleThreadExecutor().execute {
-      this.greModelsList = greDao.selectAllGreModelsWith(initialChars = initialChars,
-          difficultyLevels = difficultyLevels);
-      Log.e(TAG, "this.greModelsList.size "+this.greModelsList?.size);
-      onQueryFinished.invoke(this.greModelsList!!);
     }
   }
 

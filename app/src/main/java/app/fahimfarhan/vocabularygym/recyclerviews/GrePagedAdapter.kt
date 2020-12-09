@@ -11,8 +11,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
-class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder>
- {
+class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder> {
+ var randomMeanings: ArrayList<String> = ArrayList();
 
   constructor(
     diffCallback: DiffUtil.ItemCallback<GreModel>,
@@ -29,14 +29,14 @@ class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder>
 
      choices.add(actualGreMeaning);
 
-     val r1 = Random.nextInt(itemCount);
-     choices.add(getItem(r1)!!.greMeaning);
+     val r1 = Random.nextInt(randomMeanings.size);
+     choices.add(randomMeanings[r1]);
 
-     val r2 = Random.nextInt(itemCount);
-     choices.add(getItem(r2)!!.greMeaning);
+     val r2 = Random.nextInt(randomMeanings.size);
+     choices.add(randomMeanings[r2]);
 
-     val r3 = Random.nextInt(itemCount);
-     choices.add(getItem(r3)!!.greMeaning);
+     val r3 = Random.nextInt(randomMeanings.size);
+     choices.add(randomMeanings[r3]);
 
      Collections.shuffle(choices);
 

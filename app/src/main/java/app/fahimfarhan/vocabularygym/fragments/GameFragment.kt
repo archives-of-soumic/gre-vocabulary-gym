@@ -45,9 +45,13 @@ class GameFragment: Fragment {
 
   // Private methods
   private fun initGuiPagination() {
+    val greViewModel = (requireActivity() as StartActivity).greViewModel;
+    greViewModel.initPagination();
+
     this.grePagedAdapter = GrePagedAdapter(
         GrePagedAdapter.GreDiffCallBack, mainDispatcher = Dispatchers.Main,
         workerDispatcher = Dispatchers.Default);
+    this.grePagedAdapter.randomMeanings = greViewModel.randomMeanings;
 
     val horizontalLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireActivity(),
         LinearLayoutManager.HORIZONTAL, false);
@@ -58,8 +62,7 @@ class GameFragment: Fragment {
     val snapHelper: SnapHelper = PagerSnapHelper();
     snapHelper.attachToRecyclerView(recyclerView);
 
-    val greViewModel = (requireActivity() as StartActivity).greViewModel;
-    greViewModel.initPagination();
+
 
     CoroutineScope(Dispatchers.IO).launch {
       viewLifecycleOwner.lifecycleScope.launch {

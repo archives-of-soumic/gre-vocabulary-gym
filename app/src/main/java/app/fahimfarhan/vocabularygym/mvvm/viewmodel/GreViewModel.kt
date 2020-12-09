@@ -16,9 +16,11 @@ class GreViewModel: AndroidViewModel {
 
   lateinit var greModelsFlow: Flow<PagingData<GreModel>>;
   lateinit var greRepository: GreRepository;
+  lateinit var randomMeanings: ArrayList<String>;
 
   constructor(application: Application):super(application) {
     this.greRepository = GreRepository(context = application); // I should reorganize some codes. It got messy
+    this.randomMeanings = this.greRepository.randomMeanings;
   }
 
   fun initPagination() {
