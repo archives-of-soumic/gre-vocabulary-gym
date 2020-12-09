@@ -18,7 +18,7 @@ interface GreDatabaseDao {
    *  todo: use it with pagination. For now, I'll fetch all data at once
    */
   @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels) LIMIT :start, :limit")
-  fun selectPagedGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, start: Int=0,
+  suspend fun selectPagedGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, start: Int=0,
                              limit: Int=10): List<GreModel>;
 
   @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels)")
