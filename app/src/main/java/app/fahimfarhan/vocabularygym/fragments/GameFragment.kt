@@ -12,15 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.StartActivity
-import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
-import app.fahimfarhan.vocabularygym.recyclerviews.GreAdapter
 import app.fahimfarhan.vocabularygym.recyclerviews.GrePagedAdapter
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 class GameFragment: Fragment {
