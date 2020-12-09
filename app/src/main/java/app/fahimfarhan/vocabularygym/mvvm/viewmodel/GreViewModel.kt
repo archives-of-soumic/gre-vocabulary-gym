@@ -1,12 +1,9 @@
-package app.fahimfarhan.vocabularygym.viewmodel
+package app.fahimfarhan.vocabularygym.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import app.fahimfarhan.vocabularygym.database.GreModel
-import app.fahimfarhan.vocabularygym.repository.GreRepository
-import java.util.concurrent.Executors
+import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.repository.GreRepository
 
 class GreViewModel: AndroidViewModel {
   var difficultyLevels: ArrayList<Int> = ArrayList();

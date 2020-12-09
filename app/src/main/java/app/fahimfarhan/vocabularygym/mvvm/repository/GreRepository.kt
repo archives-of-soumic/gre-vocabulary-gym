@@ -1,14 +1,12 @@
-package app.fahimfarhan.vocabularygym.repository
+package app.fahimfarhan.vocabularygym.mvvm.repository
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import app.fahimfarhan.vocabularygym.Constants
-import app.fahimfarhan.vocabularygym.database.GreDatabase
-import app.fahimfarhan.vocabularygym.database.GreDatabaseDao
-import app.fahimfarhan.vocabularygym.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabase
+import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabaseDao
+import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import app.fahimfarhan.vocabularygym.utilities.Accessories
 import java.util.concurrent.Executors
 

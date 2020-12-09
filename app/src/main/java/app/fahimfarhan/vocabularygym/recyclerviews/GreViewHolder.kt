@@ -1,6 +1,5 @@
 package app.fahimfarhan.vocabularygym.recyclerviews
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -8,7 +7,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import app.fahimfarhan.vocabularygym.R
-import app.fahimfarhan.vocabularygym.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 
 class GreViewHolder: RecyclerView.ViewHolder {
   var greWord: TextView;

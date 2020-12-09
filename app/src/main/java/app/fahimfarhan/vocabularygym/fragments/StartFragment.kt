@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.StartActivity
 import app.fahimfarhan.vocabularygym.utilities.Accessories
-import app.fahimfarhan.vocabularygym.viewmodel.GreViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_start.*
 import java.util.*

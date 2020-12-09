@@ -1,14 +1,10 @@
 package app.fahimfarhan.vocabularygym.recyclerviews
 
-import android.app.Activity
-import android.graphics.Color.red
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
 import app.fahimfarhan.vocabularygym.R
-import app.fahimfarhan.vocabularygym.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random

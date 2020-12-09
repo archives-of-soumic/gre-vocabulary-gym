@@ -1,4 +1,4 @@
-package app.fahimfarhan.vocabularygym.database
+package app.fahimfarhan.vocabularygym.mvvm.database
 
 import android.content.Context
 import androidx.room.Database

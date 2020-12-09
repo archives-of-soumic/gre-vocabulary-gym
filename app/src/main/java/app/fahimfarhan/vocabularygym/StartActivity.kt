@@ -1,14 +1,12 @@
 package app.fahimfarhan.vocabularygym
 
-import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import app.fahimfarhan.vocabularygym.fragments.StartFragment
 import app.fahimfarhan.vocabularygym.utilities.Accessories
-import app.fahimfarhan.vocabularygym.viewmodel.GreViewModel
+import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
 import kotlinx.android.synthetic.main.activity_start.*
 
 

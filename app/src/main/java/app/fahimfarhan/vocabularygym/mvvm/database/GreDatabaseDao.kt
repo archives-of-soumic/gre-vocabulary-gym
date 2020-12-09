@@ -1,6 +1,5 @@
-package app.fahimfarhan.vocabularygym.database
+package app.fahimfarhan.vocabularygym.mvvm.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query

@@ -1,4 +1,4 @@
-package app.fahimfarhan.vocabularygym.database
+package app.fahimfarhan.vocabularygym.mvvm.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

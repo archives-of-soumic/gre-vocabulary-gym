@@ -3,7 +3,7 @@ package app.fahimfarhan.vocabularygym.utilities
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import app.fahimfarhan.vocabularygym.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
