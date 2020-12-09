@@ -1,9 +1,11 @@
 package app.fahimfarhan.vocabularygym.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.StartActivity
@@ -47,6 +49,14 @@ class StartFragment: Fragment {
 
   private val onStartClicked: View.OnClickListener = object : View.OnClickListener {
     override fun onClick(v: View?) {
+
+      if(editText.hasFocus()) {
+        val imm: InputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE)
+                as InputMethodManager;
+        imm.hideSoftInputFromWindow(editText.windowToken, 0)
+
+      }
+
       input = editText.text.toString();
       if(input.isBlank()) {
         Snackbar.make(fragmentRootView, "Please enter letters you want to practice",
