@@ -2,6 +2,8 @@ package app.fahimfarhan.vocabularygym
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import app.fahimfarhan.vocabularygym.fragments.StartFragment
@@ -26,6 +28,7 @@ class StartActivity : AppCompatActivity() {
 
     btnAnalytics.setOnClickListener {
       // todo: Finish it later
+      Log.e(StartFragment.TAG, greViewModel.failedGreWords.toString());
     };
 
     btnGrePractice.setOnClickListener {

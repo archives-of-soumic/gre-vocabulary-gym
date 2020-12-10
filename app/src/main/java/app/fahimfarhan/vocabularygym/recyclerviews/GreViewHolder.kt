@@ -10,24 +10,24 @@ import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 
 class GreViewHolder: RecyclerView.ViewHolder {
-  var greWord: TextView;
-  var greMeaning: TextView;
-  var grePartOfSpeech: TextView;
-  var greExample: TextView;
+  private var greWord: TextView;
+  private var greMeaning: TextView;
+  private var grePartOfSpeech: TextView;
+  private var greExample: TextView;
 
-  var questionContainer: ConstraintLayout;
-  var solutionContainer: ConstraintLayout;
+  private var questionContainer: ConstraintLayout;
+  private var solutionContainer: ConstraintLayout;
 
-  var radioGroup: RadioGroup;
-  var option1: RadioButton;
-  var option2: RadioButton;
-  var option3: RadioButton;
-  var option4: RadioButton;
+  private var radioGroup: RadioGroup;
+  private var option1: RadioButton;
+  private var option2: RadioButton;
+  private var option3: RadioButton;
+  private var option4: RadioButton;
 
-  var submit: TextView;
-  var pageNumer: TextView;
+  private var submit: TextView;
+  private var pageNumber: TextView;
 
-  var actualGreMeaning: String = "";
+  private var actualGreMeaning: String = "";
 
   constructor(rootView: View):super(rootView) {
     this.greWord = itemView.findViewById(R.id.greWord);
@@ -46,11 +46,12 @@ class GreViewHolder: RecyclerView.ViewHolder {
 
     this.submit = itemView.findViewById(R.id.submit);
 
-    this.pageNumer = itemView.findViewById(R.id.pageNumer);
+    this.pageNumber = itemView.findViewById(R.id.pageNumber);
   }
 
-  fun bindView(greModel: GreModel, choice: ArrayList<String>, actualGreMeaning: String, currPageNumber: String) {
-    this.pageNumer.text = currPageNumber;
+  fun bindView(greModel: GreModel, choice: ArrayList<String>, actualGreMeaning: String,
+               currPageNumber: String, onSelectingWrongMeaning: (Int) -> Unit) {
+    this.pageNumber.text = currPageNumber;
     this.greWord.text = greModel.greWord;
     this.greMeaning.text = greModel.greMeaning;
     this.grePartOfSpeech.text = greModel.grePartOfSpeech;
@@ -89,6 +90,7 @@ class GreViewHolder: RecyclerView.ViewHolder {
         if(greModel.isCorrect == null) {
           greModel.isCorrect = false;
           changeGreWordColor(greModel = greModel);
+          onSelectingWrongMeaning.invoke(greModel.pk);
         }
         val redColor = getColor(R.color.lightRed);
         radioButton.setBackgroundColor(redColor);
@@ -105,12 +107,16 @@ class GreViewHolder: RecyclerView.ViewHolder {
   }
 
   private fun changeGreWordColor(greModel: GreModel) {
-    if(greModel.isCorrect == true) {
-      this.greWord.setTextColor(getColor(R.color.colorPrimaryDark));
-    }else if(greModel.isCorrect == false) {
-      this.greWord.setTextColor(getColor(R.color.solidRed));
-    }else{
-      this.greWord.setTextColor(getColor(R.color.solidBlack));
+    when (greModel.isCorrect) {
+      true -> {
+        this.greWord.setTextColor(getColor(R.color.colorPrimaryDark));
+      }
+      false -> {
+        this.greWord.setTextColor(getColor(R.color.solidRed));
+      }
+      else -> {
+        this.greWord.setTextColor(getColor(R.color.solidBlack));
+      }
     }
   }
 

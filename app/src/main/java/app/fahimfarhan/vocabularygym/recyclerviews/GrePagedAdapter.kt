@@ -12,7 +12,9 @@ import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder> {
- var randomMeanings: ArrayList<String> = ArrayList();
+  var randomMeanings: ArrayList<String> = ArrayList();
+  lateinit var failedGreWords: ArrayList<Int>; // = ArrayList();
+  var onSelectingWrongMeaning: (Int) -> Unit = {  pk -> failedGreWords.add(pk); }
 
   constructor(
     diffCallback: DiffUtil.ItemCallback<GreModel>,
@@ -52,7 +54,9 @@ class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder> {
 
      Collections.shuffle(choices);
 
-     holder.bindView(getItem(dataPosition)!!, choices, actualGreMeaning, ( (dataPosition+1).toString()+" / " + itemCount.toString()) );
+     val currentPageNumber: String = ( (dataPosition+1).toString()+" / " + itemCount.toString());
+     holder.bindView(getItem(dataPosition)!!, choices, actualGreMeaning,
+          currentPageNumber, onSelectingWrongMeaning);
    }
 
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GreViewHolder {

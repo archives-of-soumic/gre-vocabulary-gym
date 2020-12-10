@@ -6,7 +6,7 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <TextView
-    android:id="@+id/pageNumer"
+    android:id="@+id/pageNumber"
     android:text="0/31"
     android:fontFamily="@font/main"
     android:textSize="@dimen/textSizePrimary"

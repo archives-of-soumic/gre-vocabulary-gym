@@ -51,6 +51,7 @@ class GameFragment: Fragment {
     this.grePagedAdapter = GrePagedAdapter(
         GrePagedAdapter.GreDiffCallBack, mainDispatcher = Dispatchers.Main,
         workerDispatcher = Dispatchers.Default);
+    this.grePagedAdapter.failedGreWords = greViewModel.failedGreWords;
     this.grePagedAdapter.randomMeanings = greViewModel.randomMeanings;
 
     val horizontalLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireActivity(),
