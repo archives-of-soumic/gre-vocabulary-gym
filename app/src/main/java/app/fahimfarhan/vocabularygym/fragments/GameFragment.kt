@@ -72,29 +72,5 @@ class GameFragment: Fragment {
       }
     }
   }
-
-/*  private fun initGui() {
-    val horizontalLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireActivity(),
-        LinearLayoutManager.HORIZONTAL, false);
-    this.greAdapter = GreAdapter();
-
-    recyclerView.layoutManager = horizontalLayoutManager;
-    recyclerView.adapter = this.greAdapter;
-
-    val snapHelper: SnapHelper = PagerSnapHelper();
-    snapHelper.attachToRecyclerView(recyclerView);
-
-    val greViewModel = (requireActivity() as StartActivity).greViewModel;
-    // greViewModel.greModelsList?.observe(viewLifecycleOwner, { someList -> greAdapter.submit(someList); })
-    val onQueryFinished: (somelist: List<GreModel>) -> Unit = { somelist ->
-      activity?.runOnUiThread {
-        Collections.shuffle(somelist);
-        greAdapter.submit(somelist);
-      }
-    }
-
-    greViewModel.getGreModelsInBackground(onQueryFinished);
-
-  }*/
   // Public methods
 }
