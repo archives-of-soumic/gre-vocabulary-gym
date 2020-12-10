@@ -29,14 +29,26 @@ class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder> {
 
      choices.add(actualGreMeaning);
 
-     val r1 = Random.nextInt(randomMeanings.size);
-     choices.add(randomMeanings[r1]);
+     if(randomMeanings.size > 0) {
+       val r1 = Random.nextInt(randomMeanings.size);
+       choices.add(randomMeanings[r1]);
 
-     val r2 = Random.nextInt(randomMeanings.size);
-     choices.add(randomMeanings[r2]);
+       val r2 = Random.nextInt(randomMeanings.size);
+       choices.add(randomMeanings[r2]);
 
-     val r3 = Random.nextInt(randomMeanings.size);
-     choices.add(randomMeanings[r3]);
+       val r3 = Random.nextInt(randomMeanings.size);
+       choices.add(randomMeanings[r3]);
+     }else{
+       val r1 = Random.nextInt(itemCount);
+       choices.add(getItem(r1)!!.greMeaning);
+
+       val r2 = Random.nextInt(itemCount);
+       choices.add(getItem(r2)!!.greMeaning);
+
+       val r3 = Random.nextInt(itemCount);
+       choices.add(getItem(r3)!!.greMeaning);
+
+     }
 
      Collections.shuffle(choices);
 
