@@ -2,6 +2,7 @@ package app.fahimfarhan.vocabularygym.mvvm.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 
@@ -20,5 +21,8 @@ data class GreModel(
   @ColumnInfo(name = "initial_character")
   var initialChar: Int = -1,
   @ColumnInfo(name = "difficulty_level")
-  var difficultyLevel: Int = 0
+  var difficultyLevel: Int = 0,
+  // for analytics
+  @Ignore
+  var isCorrect: Boolean? = null
 )

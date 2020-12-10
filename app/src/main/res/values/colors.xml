@@ -19,5 +19,7 @@
   <color name="solidBlack">#000000</color>
   <color name="solidWhite">#FFFFFF</color>
   <color name="lightRed">#80FF0000</color>
+  <color name="solidRed">#FF0000</color>
+
 
 </resources>

@@ -70,16 +70,26 @@ class GreViewHolder: RecyclerView.ViewHolder {
     this.option3.setBackgroundColor(radioButtonColor);
     this.option4.setBackgroundColor(radioButtonColor);
 
+    changeGreWordColor(greModel = greModel);
+
     this.submit.setOnClickListener{  submitTextView ->
       val checkedRadioButtonId = radioGroup.checkedRadioButtonId;
       val radioButton: RadioButton = itemView.findViewById(checkedRadioButtonId);
       val selectedMeaning: String = radioButton.text.toString();
 
       if( actualGreMeaning.equals(selectedMeaning) ) {
+        if(greModel.isCorrect == null) {
+          greModel.isCorrect = true;
+          changeGreWordColor(greModel = greModel);
+        }
         solutionContainer.visibility = View.VISIBLE;
         val greenColor = getColor(R.color.colorPrimary);
         radioButton.setBackgroundColor(greenColor);
       }else{
+        if(greModel.isCorrect == null) {
+          greModel.isCorrect = false;
+          changeGreWordColor(greModel = greModel);
+        }
         val redColor = getColor(R.color.lightRed);
         radioButton.setBackgroundColor(redColor);
       }
@@ -92,6 +102,16 @@ class GreViewHolder: RecyclerView.ViewHolder {
     } else {
       return itemView.context.resources.getColor(colorResId);
     };
+  }
+
+  private fun changeGreWordColor(greModel: GreModel) {
+    if(greModel.isCorrect == true) {
+      this.greWord.setTextColor(getColor(R.color.colorPrimaryDark));
+    }else if(greModel.isCorrect == false) {
+      this.greWord.setTextColor(getColor(R.color.solidRed));
+    }else{
+      this.greWord.setTextColor(getColor(R.color.solidBlack));
+    }
   }
 
 }
