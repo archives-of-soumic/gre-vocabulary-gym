@@ -18,6 +18,7 @@ class GreViewModel: AndroidViewModel {
   lateinit var greRepository: GreRepository;
   lateinit var randomMeanings: ArrayList<String>;
   var failedGreWords: ArrayList<Int> = ArrayList();
+  var N: Int = 0;
 
 
   constructor(application: Application):super(application) {
@@ -26,6 +27,8 @@ class GreViewModel: AndroidViewModel {
   }
 
   fun initPagination() {
+    this.N = 0;
+    this.failedGreWords.clear();
     this.initPagination(initialChars, difficultyLevels);
   }
 

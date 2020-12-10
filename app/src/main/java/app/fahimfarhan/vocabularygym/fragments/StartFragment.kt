@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.StartActivity
+import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
 import app.fahimfarhan.vocabularygym.utilities.Accessories
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_start.*
@@ -22,6 +23,7 @@ class StartFragment: Fragment {
   }
   // Variables
   private lateinit var fragmentRootView: View;
+  private lateinit var greViewModel: GreViewModel;
   private val difficultyLevels: ArrayList<Int> = ArrayList();
   private val initialChars:  ArrayList<Int> = ArrayList();
   var input: String = "";
@@ -45,6 +47,21 @@ class StartFragment: Fragment {
   // Private methods
   private fun initGui() {
     start.setOnClickListener(onStartClicked);
+  }
+
+  override fun onResume() {
+    super.onResume()
+    // cz we want this to happen when we return from the gameFragment
+    this.greViewModel = (requireActivity() as StartActivity).greViewModel;
+    if(greViewModel.failedGreWords.size == 0) {
+      summary.visibility = View.GONE;
+    }else{
+      summary.visibility = View.VISIBLE;
+      summaryTitle.text = "You got "+greViewModel.failedGreWords.size+" words wrong in the last session!";
+      saveProgress.setOnClickListener{
+        // todo:
+      }
+    }
   }
 
   private val onStartClicked: View.OnClickListener = object : View.OnClickListener {

@@ -51,7 +51,9 @@ class GameFragment: Fragment {
     this.grePagedAdapter = GrePagedAdapter(
         GrePagedAdapter.GreDiffCallBack, mainDispatcher = Dispatchers.Main,
         workerDispatcher = Dispatchers.Default);
-    this.grePagedAdapter.failedGreWords = greViewModel.failedGreWords;
+    this.grePagedAdapter.onSelectingWrongMeaning = {  pk ->
+      greViewModel.failedGreWords.add(pk);
+    };
     this.grePagedAdapter.randomMeanings = greViewModel.randomMeanings;
 
     val horizontalLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireActivity(),
@@ -69,6 +71,7 @@ class GameFragment: Fragment {
       viewLifecycleOwner.lifecycleScope.launch {
         greViewModel.greModelsFlow.collectLatest {
           someList -> grePagedAdapter.submitData(someList);
+          greViewModel.N = grePagedAdapter.itemCount;
         }
       }
     }

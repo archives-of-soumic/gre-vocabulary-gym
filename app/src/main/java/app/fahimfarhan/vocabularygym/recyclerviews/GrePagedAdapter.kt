@@ -13,8 +13,7 @@ import kotlin.random.Random
 
 class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder> {
   var randomMeanings: ArrayList<String> = ArrayList();
-  lateinit var failedGreWords: ArrayList<Int>; // = ArrayList();
-  var onSelectingWrongMeaning: (Int) -> Unit = {  pk -> failedGreWords.add(pk); }
+  lateinit var onSelectingWrongMeaning: (Int) -> Unit;
 
   constructor(
     diffCallback: DiffUtil.ItemCallback<GreModel>,

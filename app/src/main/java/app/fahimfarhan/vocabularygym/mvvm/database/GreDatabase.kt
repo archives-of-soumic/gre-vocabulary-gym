@@ -8,7 +8,7 @@ import app.fahimfarhan.vocabularygym.Constants
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-@Database(entities = [GreModel::class], version = 1, exportSchema = false)
+@Database(entities = [GreModel::class, PeccableWords::class], version = 1, exportSchema = false)
 abstract class GreDatabase : RoomDatabase() {
   abstract val greDatabaseDao: GreDatabaseDao;
 
