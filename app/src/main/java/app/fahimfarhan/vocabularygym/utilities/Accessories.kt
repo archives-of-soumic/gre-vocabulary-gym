@@ -45,5 +45,13 @@ class Accessories {
         .addToBackStack(tag)
         .commit();
     }
+
+    fun getColor(context: Context, colorResId: Int): Int {
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        return context.resources.getColor(colorResId, null);
+      } else {
+        return context.resources.getColor(colorResId);
+      };
+    }
   }
 }

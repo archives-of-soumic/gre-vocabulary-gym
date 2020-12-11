@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import app.fahimfarhan.vocabularygym.R
-import app.fahimfarhan.vocabularygym.StartActivity
+import app.fahimfarhan.vocabularygym.activitykt.StartActivity
 import app.fahimfarhan.vocabularygym.recyclerviews.GrePagedAdapter
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.CoroutineScope

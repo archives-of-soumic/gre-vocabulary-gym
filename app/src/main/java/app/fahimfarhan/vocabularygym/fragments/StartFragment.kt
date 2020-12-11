@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import app.fahimfarhan.vocabularygym.R
-import app.fahimfarhan.vocabularygym.StartActivity
+import app.fahimfarhan.vocabularygym.activitykt.StartActivity
 import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
 import app.fahimfarhan.vocabularygym.utilities.Accessories
 import com.google.android.material.snackbar.Snackbar
@@ -67,9 +67,11 @@ class StartFragment: Fragment {
     }else{
       summary.visibility = View.VISIBLE;
       saveProgress.isEnabled = true;
+      saveProgress.setBackgroundColor(Accessories.getColor(requireActivity(), R.color.colorPrimaryDark));
       summaryTitle.text = "You got "+greViewModel.failedGreWords.size+" words wrong in the last session!";
       saveProgress.setOnClickListener{
         saveProgress.isEnabled = false;
+        saveProgress.setBackgroundColor(Accessories.getColor(requireActivity(), R.color.grey20));
         greViewModel.savePeccableWords();
         Snackbar.make(
           fragmentRootView, "These words will be saved in database!",

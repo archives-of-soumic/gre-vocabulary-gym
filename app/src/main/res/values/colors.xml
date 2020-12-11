@@ -20,6 +20,6 @@
   <color name="solidWhite">#FFFFFF</color>
   <color name="lightRed">#80FF0000</color>
   <color name="solidRed">#FF0000</color>
-
+  <color name="grey20">#20000000</color>
 
 </resources>
