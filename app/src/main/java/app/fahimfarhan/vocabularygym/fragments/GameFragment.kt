@@ -71,7 +71,6 @@ class GameFragment: Fragment {
       viewLifecycleOwner.lifecycleScope.launch {
         greViewModel.greModelsFlow.collectLatest {
           someList -> grePagedAdapter.submitData(someList);
-          greViewModel.N = grePagedAdapter.itemCount;
         }
       }
     }

@@ -9,7 +9,10 @@ import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
 import app.fahimfarhan.vocabularygym.mvvm.pagination.GrePagingSource
 import app.fahimfarhan.vocabularygym.mvvm.repository.GreRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 class GreViewModel: AndroidViewModel {
   var difficultyLevels: ArrayList<Int> = ArrayList();
@@ -31,6 +34,9 @@ class GreViewModel: AndroidViewModel {
     this.N = 0;
     this.failedGreWords.clear();
     this.initPagination(initialChars, difficultyLevels);
+    GlobalScope.launch(Dispatchers.IO) {
+      N = greRepository.countAllGreModelsWith(initialChars, difficultyLevels);
+    }
   }
 
   fun initPagination(initialChars: List<Int>, difficultyLevels: List<Int>) {
@@ -48,7 +54,9 @@ class GreViewModel: AndroidViewModel {
   fun savePeccableWords() {
     val peccableWords = PeccableWords(0, failedGreWords, N);
     greRepository.insertPeccableWord(peccableWords = peccableWords);
-    N = 0;
-    failedGreWords.clear();
+  }
+
+  suspend fun getPeccableWordsList(): List<PeccableWords> {
+    return greRepository.getPeccableWordsList();
   }
 }

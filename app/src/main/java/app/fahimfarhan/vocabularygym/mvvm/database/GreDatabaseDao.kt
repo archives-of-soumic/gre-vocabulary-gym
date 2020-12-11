@@ -21,8 +21,8 @@ interface GreDatabaseDao {
   suspend fun selectPagedGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>, start: Int=0,
                              limit: Int=10): List<GreModel>;
 
-  @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels)")
-  fun selectAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>): List<GreModel>;
+  @Query("SELECT COUNT(*) FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels)")
+  suspend fun countAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>): Int;
 
   @Query("SELECT gre_meaning FROM gre_vocabulary_table ORDER BY Random() Limit 100")
   fun selectRandomMeanings(): List<String>;
@@ -30,6 +30,6 @@ interface GreDatabaseDao {
   @Insert
   fun insertPeccableWord(peccableWords: PeccableWords);
 
-  @Query("SELECT * FROM PECCABLE_WORDS_TABLE")  // TODO: MAYBE UPGRADE IT LATER, eg, add pagination
+  @Query("SELECT * FROM PECCABLE_WORDS_TABLE ORDER BY pk DESC")  // TODO: MAYBE UPGRADE IT LATER, eg, add pagination
   suspend fun getAllPeccableWords(): List<PeccableWords>;
 }

@@ -76,4 +76,12 @@ class GreRepository {
     }
   }
 
+  suspend fun getPeccableWordsList(): List<PeccableWords> {
+    return greDao.getAllPeccableWords();
+  }
+
+  suspend fun countAllGreModelsWith(initialChars: List<Int>, difficultyLevels: List<Int>): Int{
+    return greDao.countAllGreModelsWith(initialChars, difficultyLevels);
+  }
+
 }

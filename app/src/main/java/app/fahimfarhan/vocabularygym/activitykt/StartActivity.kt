@@ -7,10 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import app.fahimfarhan.vocabularygym.R
+import app.fahimfarhan.vocabularygym.fragments.AnalyticsFragment
 import app.fahimfarhan.vocabularygym.fragments.StartFragment
 import app.fahimfarhan.vocabularygym.utilities.Accessories
 import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
 import kotlinx.android.synthetic.main.activity_start.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class StartActivity : AppCompatActivity() {
@@ -28,8 +33,9 @@ class StartActivity : AppCompatActivity() {
     ).get(GreViewModel::class.java);
 
     btnAnalytics.setOnClickListener {
-      // todo: Finish it later
-      Log.e(StartFragment.TAG, greViewModel.failedGreWords.toString());
+      val analytivsFragment = AnalyticsFragment();
+      Accessories.initFragment(supportFragmentManager, startFrameLayout.id, analytivsFragment,
+          AnalyticsFragment.TAG);
     };
 
     btnGrePractice.setOnClickListener {
