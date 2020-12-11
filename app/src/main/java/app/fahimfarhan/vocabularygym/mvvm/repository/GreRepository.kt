@@ -84,4 +84,8 @@ class GreRepository {
     return greDao.countAllGreModelsWith(initialChars, difficultyLevels);
   }
 
+  suspend fun selectGreModelsIn(ids: List<Int>): List<GreModel> {
+    return greDao.selectGreModelsIn(ids);
+  }
+
 }

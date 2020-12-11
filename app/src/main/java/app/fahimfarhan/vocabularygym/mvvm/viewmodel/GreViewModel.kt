@@ -59,4 +59,8 @@ class GreViewModel: AndroidViewModel {
   suspend fun getPeccableWordsList(): List<PeccableWords> {
     return greRepository.getPeccableWordsList();
   }
+
+  suspend fun selectGreModelsIn(ids: List<Int>): List<GreModel> {
+    return greRepository.selectGreModelsIn(ids);
+  }
 }

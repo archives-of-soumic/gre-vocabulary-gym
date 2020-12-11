@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_margin="@dimen/padding_small"
+  android:padding="@dimen/padding_regular"
+  android:background="@color/grey20"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <TextView
+    android:id="@+id/greWord"
+    android:text="Foo"
+    android:fontFamily="@font/main"
+    android:textSize="@dimen/textSizeHeading"
+    android:textColor="@color/solidBlack"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/greMeaning"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+
+  <TextView
+    android:id="@+id/greMeaning"
+    tools:text="bar"
+    android:gravity="center"
+    android:textSize="@dimen/textSizePrimary"
+    android:fontFamily="@font/main"
+    android:textColor="@color/solidBlack"
+    app:layout_constraintBottom_toTopOf="@id/grePartOfSpeech"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+  <TextView
+    android:id="@+id/grePartOfSpeech"
+    tools:text="Verb"
+    android:gravity="center"
+    android:textSize="@dimen/textSizePrimary"
+    android:fontFamily="@font/main"
+    android:textColor="@color/solidBlack"
+    app:layout_constraintBottom_toTopOf="@id/greExample"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+  <TextView
+    android:id="@+id/greExample"
+    android:gravity="center"
+    tools:text="A quick brown fox jumped over the lazy dog"
+    android:textSize="@dimen/textSizePrimary"
+    android:fontFamily="@font/main"
+    android:textColor="@color/solidBlack"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
