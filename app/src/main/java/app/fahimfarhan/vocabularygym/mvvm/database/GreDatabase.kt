@@ -1,14 +1,13 @@
 package app.fahimfarhan.vocabularygym.mvvm.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import app.fahimfarhan.vocabularygym.Constants
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 @Database(entities = [GreModel::class, PeccableWords::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class GreDatabase : RoomDatabase() {
   abstract val greDatabaseDao: GreDatabaseDao;
 

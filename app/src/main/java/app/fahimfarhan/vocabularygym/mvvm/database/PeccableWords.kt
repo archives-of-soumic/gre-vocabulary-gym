@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "peccable_words_table")
 data class PeccableWords(
-    @PrimaryKey(autoGenerate = true)
+  @PrimaryKey(autoGenerate = true)
   var pk: Int = 0,
-    @ColumnInfo(name = "words_list")
-  var wordsList: List<Int> = emptyList<Int>(),
-    @ColumnInfo(name = "out_of_words")
+  @ColumnInfo(name = "words_list")
+  var wordsList: ArrayList<Int> = ArrayList(),
+  @ColumnInfo(name = "out_of_words")
   var outOfWords: Int = 0
 )

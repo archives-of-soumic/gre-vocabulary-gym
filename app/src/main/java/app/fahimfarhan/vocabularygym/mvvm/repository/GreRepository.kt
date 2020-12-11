@@ -7,6 +7,7 @@ import app.fahimfarhan.vocabularygym.Constants
 import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabase
 import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabaseDao
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
 import app.fahimfarhan.vocabularygym.utilities.Accessories
 import java.util.concurrent.Executors
 
@@ -66,6 +67,12 @@ class GreRepository {
   fun insertAllGreModels(greList: ArrayList<GreModel>) {
     GreDatabase.databaseWriteExecutor.execute{
       greDao.insertAllGreModels(greModelList = greList);
+    }
+  }
+
+  fun insertPeccableWord(peccableWords: PeccableWords) {
+    GreDatabase.databaseWriteExecutor.execute {
+      greDao.insertPeccableWord(peccableWords = peccableWords);
     }
   }
 

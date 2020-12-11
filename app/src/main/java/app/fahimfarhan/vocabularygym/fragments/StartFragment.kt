@@ -2,6 +2,7 @@ package app.fahimfarhan.vocabularygym.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_start.*
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class StartFragment: Fragment {
   // Consts / Statics
@@ -31,8 +33,10 @@ class StartFragment: Fragment {
   constructor() {}
 
   // Override methods
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
-  Bundle?): View? {
+  override fun onCreateView(
+    inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
+    Bundle?
+  ): View? {
     // return super.onCreateView(inflater, container, savedInstanceState)
     this.fragmentRootView = inflater.inflate(R.layout.fragment_start, container, false);
     this.fragmentRootView.setOnClickListener { /* empty click listener to prevent click propagation*/ };
@@ -51,15 +55,26 @@ class StartFragment: Fragment {
 
   override fun onResume() {
     super.onResume()
+    Log.e(TAG, "inside onResume");
+    doOnResume();
+  }
+
+  fun doOnResume() {
     // cz we want this to happen when we return from the gameFragment
     this.greViewModel = (requireActivity() as StartActivity).greViewModel;
     if(greViewModel.failedGreWords.size == 0) {
       summary.visibility = View.GONE;
     }else{
       summary.visibility = View.VISIBLE;
+      saveProgress.isEnabled = true;
       summaryTitle.text = "You got "+greViewModel.failedGreWords.size+" words wrong in the last session!";
       saveProgress.setOnClickListener{
-        // todo:
+        saveProgress.isEnabled = false;
+        greViewModel.savePeccableWords();
+        Snackbar.make(
+          fragmentRootView, "These words will be saved in database!",
+          Snackbar.LENGTH_LONG
+        ).show();
       }
     }
   }
@@ -76,8 +91,10 @@ class StartFragment: Fragment {
 
       input = editText.text.toString();
       if(input.isBlank()) {
-        Snackbar.make(fragmentRootView, "Please enter letters you want to practice",
-            Snackbar.LENGTH_LONG).show();
+        Snackbar.make(
+          fragmentRootView, "Please enter letters you want to practice",
+          Snackbar.LENGTH_LONG
+        ).show();
         return;
       }
 
@@ -90,7 +107,11 @@ class StartFragment: Fragment {
       val gameFragment: GameFragment = GameFragment();
 
       Accessories.initFragment(
-        requireActivity().supportFragmentManager, R.id.baseFrameLayout, gameFragment, GameFragment.TAG);
+        requireActivity().supportFragmentManager,
+        R.id.baseFrameLayout,
+        gameFragment,
+        GameFragment.TAG
+      );
     }
   }
 

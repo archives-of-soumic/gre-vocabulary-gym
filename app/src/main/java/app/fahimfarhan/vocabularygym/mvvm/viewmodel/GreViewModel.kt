@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabase
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
 import app.fahimfarhan.vocabularygym.mvvm.pagination.GrePagingSource
 import app.fahimfarhan.vocabularygym.mvvm.repository.GreRepository
 import kotlinx.coroutines.flow.Flow
@@ -42,5 +43,12 @@ class GreViewModel: AndroidViewModel {
                                             pagingSourceFactory = grePagingSourceFactory);
 
     this.greModelsFlow = pager.flow.cachedIn(viewModelScope);
+  }
+
+  fun savePeccableWords() {
+    val peccableWords = PeccableWords(0, failedGreWords, N);
+    greRepository.insertPeccableWord(peccableWords = peccableWords);
+    N = 0;
+    failedGreWords.clear();
   }
 }

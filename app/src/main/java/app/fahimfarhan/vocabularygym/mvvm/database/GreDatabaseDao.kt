@@ -26,4 +26,10 @@ interface GreDatabaseDao {
 
   @Query("SELECT gre_meaning FROM gre_vocabulary_table ORDER BY Random() Limit 100")
   fun selectRandomMeanings(): List<String>;
+
+  @Insert
+  fun insertPeccableWord(peccableWords: PeccableWords);
+
+  @Query("SELECT * FROM PECCABLE_WORDS_TABLE")  // TODO: MAYBE UPGRADE IT LATER, eg, add pagination
+  suspend fun getAllPeccableWords(): List<PeccableWords>;
 }
