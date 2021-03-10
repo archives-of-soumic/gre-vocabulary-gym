@@ -89,4 +89,8 @@ class GreRepository {
     return greDao.selectGreModelsIn(ids);
   }
 
+  fun getGreWordsWith(initialChars: List<Int>, difficultyLevels: List<Int>): List<GreModel> {
+    return greDao.getGreWordsWith(initialChars, difficultyLevels);
+  }
+
 }

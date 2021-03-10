@@ -37,4 +37,7 @@ interface GreDatabaseDao {
   @Query("SELECT * FROM gre_vocabulary_table WHERE pk IN (:ids)")
   suspend fun selectGreModelsIn(ids: List<Int>): List<GreModel>;
 
+  @Query("SELECT * FROM gre_vocabulary_table WHERE initial_character IN (:initialChars) AND difficulty_level IN (:difficultyLevels)")
+  fun getGreWordsWith(initialChars: List<Int>, difficultyLevels: List<Int>): List<GreModel>;
+
 }

@@ -106,13 +106,13 @@ class StartFragment: Fragment {
       val startActivity: StartActivity = requireActivity() as StartActivity;
       startActivity.greViewModel.initialChars = initialChars;
       startActivity.greViewModel.difficultyLevels = difficultyLevels;
-      val gameFragment: GameFragment = GameFragment();
+      val gameFragment: GameFragment2 = GameFragment2();
 
       Gizmos.initFragment(
         requireActivity().supportFragmentManager,
         R.id.baseFrameLayout,
         gameFragment,
-        GameFragment.TAG
+        GameFragment2.TAG
       );
     }
   }

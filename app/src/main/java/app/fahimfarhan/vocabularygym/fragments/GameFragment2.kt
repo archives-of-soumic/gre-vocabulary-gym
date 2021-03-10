@@ -12,22 +12,29 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.activitykt.StartActivity
+import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
+import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
+import app.fahimfarhan.vocabularygym.recyclerviews.GreAdapter
 import app.fahimfarhan.vocabularygym.recyclerviews.GrePagedAdapter
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.concurrent.Executors
 
 @Suppress("RedundantSemicolon")
 class GameFragment2: Fragment {
   // Consts / Statics
   companion object{
-    val TAG: String = GameFragment::class.java.simpleName;
+    val TAG: String = GameFragment2::class.java.simpleName;
   }
+
+  private lateinit var greViewModel: GreViewModel
+
   // Variables
   private lateinit var fragmentRootView: View;
-  private lateinit var grePagedAdapter: GrePagedAdapter;
+  private lateinit var greAdapter: GreAdapter;
   // Constructors
   constructor() {}
 
@@ -40,40 +47,36 @@ class GameFragment2: Fragment {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState);
-    this.initGuiPagination();
+    initGreWords()
   }
 
   // Private methods
-  private fun initGuiPagination() {
-    val greViewModel = (requireActivity() as StartActivity).greViewModel;
-    greViewModel.initPagination();
+  private fun initGreWords() {
+    greViewModel = (requireActivity() as StartActivity).greViewModel;
 
-    this.grePagedAdapter = GrePagedAdapter(
-      GrePagedAdapter.GreDiffCallBack, mainDispatcher = Dispatchers.Main,
-      workerDispatcher = Dispatchers.Default);
-    this.grePagedAdapter.onSelectingWrongMeaning = {  pk ->
+    this.greAdapter = GreAdapter();
+
+    this.greAdapter.onSelectingWrongMeaning = {  pk ->
       greViewModel.failedGreWords.add(pk);
     };
-    this.grePagedAdapter.randomMeanings = greViewModel.randomMeanings;
+    this.greAdapter.randomMeanings = greViewModel.randomMeanings;
 
     val horizontalLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireActivity(),
       LinearLayoutManager.HORIZONTAL, false);
 
     recyclerView.layoutManager = horizontalLayoutManager;
-    recyclerView.adapter = this.grePagedAdapter;
+    recyclerView.adapter = this.greAdapter;
 
     val snapHelper: SnapHelper = PagerSnapHelper();
     snapHelper.attachToRecyclerView(recyclerView);
 
-
-
-    CoroutineScope(Dispatchers.IO).launch {
-      viewLifecycleOwner.lifecycleScope.launch {
-        greViewModel.greModelsFlow.collectLatest {
-            someList -> grePagedAdapter.submitData(someList);
-        }
+    Executors.newSingleThreadExecutor().execute {
+      val greWords: List<GreModel> = greViewModel.getGreWords();
+      requireActivity().runOnUiThread {
+        greAdapter.submit(greWords)
       }
     }
   }
+
   // Public methods
 }

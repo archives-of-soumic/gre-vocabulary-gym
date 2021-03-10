@@ -30,7 +30,15 @@ class GreViewModel: AndroidViewModel {
     this.greRepository = GreRepository(context = application); // I should reorganize some codes. It got messy
     this.randomMeanings = this.greRepository.randomMeanings;
   }
+//  ------ Non pagination version -----
 
+
+  fun getGreWords(): List<GreModel> {
+    this.failedGreWords.clear()
+    return greRepository.getGreWordsWith(initialChars, difficultyLevels)
+  }
+
+// -------- Pagination version -------
   fun initPagination() {
     this.N = 0;
     this.failedGreWords.clear();
