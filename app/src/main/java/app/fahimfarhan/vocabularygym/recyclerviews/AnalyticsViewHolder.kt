@@ -8,7 +8,7 @@ import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.activitykt.StartActivity
 import app.fahimfarhan.vocabularygym.fragments.PracticeFragment
 import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
-import app.fahimfarhan.vocabularygym.utilities.Accessories
+import app.fahimfarhan.vocabularygym.utilities.Gizmos
 
 class AnalyticsViewHolder : RecyclerView.ViewHolder{
 
@@ -25,7 +25,7 @@ class AnalyticsViewHolder : RecyclerView.ViewHolder{
       val practiceFragment = PracticeFragment();
       practiceFragment.peccableWordsList = peccableWords.wordsList;
       val fragmentManager: FragmentManager = (itemView.context as StartActivity).supportFragmentManager;
-      Accessories.initFragment(fragmentManager, baseFrameLayoutId, practiceFragment, PracticeFragment.TAG);
+      Gizmos.initFragment(fragmentManager, baseFrameLayoutId, practiceFragment, PracticeFragment.TAG);
 
     };
   }

@@ -1,6 +1,7 @@
 package app.fahimfarhan.vocabularygym.mvvm.pagination
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabase
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import kotlinx.coroutines.CoroutineScope

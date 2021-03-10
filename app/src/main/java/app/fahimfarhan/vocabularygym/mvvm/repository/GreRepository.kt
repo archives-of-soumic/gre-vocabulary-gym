@@ -8,7 +8,7 @@ import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabase
 import app.fahimfarhan.vocabularygym.mvvm.database.GreDatabaseDao
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
-import app.fahimfarhan.vocabularygym.utilities.Accessories
+import app.fahimfarhan.vocabularygym.utilities.Gizmos
 import java.util.concurrent.Executors
 
 class GreRepository {
@@ -29,9 +29,9 @@ class GreRepository {
     val isFirstTime: Boolean = isFirstTimeFromPreference(context);
     if(isFirstTime) {
       Log.e(TAG, "2");
-      val commonGreWords = Accessories.readFromCsv(context, "magoosh_1_common.csv", 1);
-      val basicGreWords = Accessories.readFromCsv(context, "magoosh_2_basic.csv", 2);
-      val advancedGreWords = Accessories.readFromCsv(context, "magoosh_3_advanced.csv", 3);
+      val commonGreWords = Gizmos.readFromCsv(context, "magoosh_1_common.csv", 1);
+      val basicGreWords = Gizmos.readFromCsv(context, "magoosh_2_basic.csv", 2);
+      val advancedGreWords = Gizmos.readFromCsv(context, "magoosh_3_advanced.csv", 3);
 
       insertAllGreModels(commonGreWords);
       insertAllGreModels(basicGreWords);

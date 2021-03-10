@@ -7,9 +7,9 @@ import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class Accessories {
+class Gizmos {
   companion object {
-    val TAG: String = Accessories::class.java.simpleName;
+    val TAG: String = Gizmos::class.java.simpleName;
 
     fun readFromCsv(context: Context, fileName: String, difficultyLevel: Int): ArrayList<GreModel> {
       val result: ArrayList<GreModel> = ArrayList();
