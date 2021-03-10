@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 
+@Suppress("RedundantSemicolon")
 class GreViewHolder: RecyclerView.ViewHolder {
   private var greWord: TextView;
   private var greMeaning: TextView;

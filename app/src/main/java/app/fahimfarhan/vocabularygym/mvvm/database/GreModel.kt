@@ -6,6 +6,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 
+@Suppress("RedundantSemicolon")
 @Entity(tableName = "gre_vocabulary_table")
 data class GreModel(
   @PrimaryKey(autoGenerate = true)

@@ -14,6 +14,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
+@Suppress("RedundantSemicolon")
 class GreViewModel: AndroidViewModel {
   var difficultyLevels: ArrayList<Int> = ArrayList();
   var initialChars: ArrayList<Int> = ArrayList();

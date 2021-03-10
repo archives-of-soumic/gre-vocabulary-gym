@@ -7,6 +7,7 @@ import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
+@Suppress("RedundantSemicolon")
 class Gizmos {
   companion object {
     val TAG: String = Gizmos::class.java.simpleName;

@@ -6,6 +6,7 @@ import app.fahimfarhan.vocabularygym.Constants
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+@Suppress("RedundantSemicolon")
 @Database(entities = [GreModel::class, PeccableWords::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class GreDatabase : RoomDatabase() {

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
 
+@Suppress("RedundantSemicolon")
 class AnalyticsAdapter : RecyclerView.Adapter<AnalyticsViewHolder> {
   private var peccableWords: ArrayList<PeccableWords> = ArrayList();
   private var baseFrameLayoutId: Int;

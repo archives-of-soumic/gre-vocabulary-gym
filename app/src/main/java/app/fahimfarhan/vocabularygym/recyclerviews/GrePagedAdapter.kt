@@ -11,6 +11,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
+@Suppress("RedundantSemicolon")
 class GrePagedAdapter : PagingDataAdapter<GreModel, GreViewHolder> {
   var randomMeanings: ArrayList<String> = ArrayList();
   lateinit var onSelectingWrongMeaning: (Int) -> Unit;

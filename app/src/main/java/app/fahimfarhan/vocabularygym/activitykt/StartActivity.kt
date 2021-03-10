@@ -12,7 +12,7 @@ import app.fahimfarhan.vocabularygym.utilities.Gizmos
 import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
 import kotlinx.android.synthetic.main.activity_start.*
 
-
+@Suppress("RedundantSemicolon")
 class StartActivity : AppCompatActivity() {
 
   lateinit var greViewModel: GreViewModel;

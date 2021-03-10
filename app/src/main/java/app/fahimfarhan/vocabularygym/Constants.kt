@@ -1,5 +1,6 @@
 package app.fahimfarhan.vocabularygym
 
+@Suppress("RedundantSemicolon")
 object Constants {
   const val DATABASE_NAME = "gre_database"
   val GRE_SHARED_PREFERENCE: String = "GRE_SHARED_PREFERENCE"

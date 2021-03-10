@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
 
-
+@Suppress("RedundantSemicolon")
 class Converters {
     companion object {
         @TypeConverter

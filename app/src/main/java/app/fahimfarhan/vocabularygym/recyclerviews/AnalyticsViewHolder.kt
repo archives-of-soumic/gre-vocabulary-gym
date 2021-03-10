@@ -10,6 +10,7 @@ import app.fahimfarhan.vocabularygym.fragments.PracticeFragment
 import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
 import app.fahimfarhan.vocabularygym.utilities.Gizmos
 
+@Suppress("RedundantSemicolon")
 class AnalyticsViewHolder : RecyclerView.ViewHolder{
 
   var textView: TextView;

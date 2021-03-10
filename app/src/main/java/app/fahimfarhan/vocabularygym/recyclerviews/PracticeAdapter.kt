@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 
+@Suppress("RedundantSemicolon")
 class PracticeAdapter : RecyclerView.Adapter<PracticeViewHolder>{
   private var greWordsList: ArrayList<GreModel> = ArrayList();
   constructor(): super() {}

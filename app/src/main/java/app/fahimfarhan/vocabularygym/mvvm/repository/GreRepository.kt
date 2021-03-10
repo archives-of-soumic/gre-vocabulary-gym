@@ -11,6 +11,7 @@ import app.fahimfarhan.vocabularygym.mvvm.database.PeccableWords
 import app.fahimfarhan.vocabularygym.utilities.Gizmos
 import java.util.concurrent.Executors
 
+@Suppress("RedundantSemicolon")
 class GreRepository {
   // Consts / Statics
   companion object {

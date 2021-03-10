@@ -7,6 +7,7 @@ import app.fahimfarhan.vocabularygym.R
 import app.fahimfarhan.vocabularygym.mvvm.database.GreModel
 import kotlinx.android.synthetic.main.practice_item_row.view.*
 
+@Suppress("RedundantSemicolon")
 class PracticeViewHolder : RecyclerView.ViewHolder {
   lateinit var greWord: TextView;
   lateinit var greMeaning: TextView;

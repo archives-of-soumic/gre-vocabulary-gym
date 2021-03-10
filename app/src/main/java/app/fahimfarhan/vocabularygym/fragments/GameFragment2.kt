@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Suppress("RedundantSemicolon")
-class GameFragment: Fragment {
+class GameFragment2: Fragment {
   // Consts / Statics
   companion object{
     val TAG: String = GameFragment::class.java.simpleName;
@@ -49,15 +49,15 @@ class GameFragment: Fragment {
     greViewModel.initPagination();
 
     this.grePagedAdapter = GrePagedAdapter(
-        GrePagedAdapter.GreDiffCallBack, mainDispatcher = Dispatchers.Main,
-        workerDispatcher = Dispatchers.Default);
+      GrePagedAdapter.GreDiffCallBack, mainDispatcher = Dispatchers.Main,
+      workerDispatcher = Dispatchers.Default);
     this.grePagedAdapter.onSelectingWrongMeaning = {  pk ->
       greViewModel.failedGreWords.add(pk);
     };
     this.grePagedAdapter.randomMeanings = greViewModel.randomMeanings;
 
     val horizontalLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireActivity(),
-        LinearLayoutManager.HORIZONTAL, false);
+      LinearLayoutManager.HORIZONTAL, false);
 
     recyclerView.layoutManager = horizontalLayoutManager;
     recyclerView.adapter = this.grePagedAdapter;
@@ -70,7 +70,7 @@ class GameFragment: Fragment {
     CoroutineScope(Dispatchers.IO).launch {
       viewLifecycleOwner.lifecycleScope.launch {
         greViewModel.greModelsFlow.collectLatest {
-          someList -> grePagedAdapter.submitData(someList);
+            someList -> grePagedAdapter.submitData(someList);
         }
       }
     }

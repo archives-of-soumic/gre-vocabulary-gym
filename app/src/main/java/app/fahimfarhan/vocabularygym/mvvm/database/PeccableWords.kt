@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Suppress("RedundantSemicolon")
 @Entity(tableName = "peccable_words_table")
 data class PeccableWords(
   @PrimaryKey(autoGenerate = true)

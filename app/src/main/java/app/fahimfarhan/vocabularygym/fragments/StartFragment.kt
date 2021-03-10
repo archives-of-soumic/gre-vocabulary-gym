@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_start.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-
+@Suppress("RedundantSemicolon")
 class StartFragment: Fragment {
   // Consts / Statics
   companion object {

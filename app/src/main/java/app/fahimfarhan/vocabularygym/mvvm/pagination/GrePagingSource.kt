@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
+@Suppress("RedundantSemicolon")
 class GrePagingSource : PagingSource<Int, GreModel> {
 
   private val greDb: GreDatabase;
