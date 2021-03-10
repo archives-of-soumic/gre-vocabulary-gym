@@ -9,11 +9,13 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
-@Suppress("ConvertSecondaryConstructorToPrimary")
+@Suppress("ConvertSecondaryConstructorToPrimary", "RedundantSemicolon")
 class GreAdapter: RecyclerView.Adapter<GreViewHolder> {
   var randomMeanings: ArrayList<String> = ArrayList();
   val allGreWords: ArrayList<GreModel> = ArrayList()
   var onSelectingWrongMeaning: (Int) -> Unit = {};
+
+  val shouldShowHint = false
 
   constructor(): super() {
 
@@ -29,7 +31,7 @@ class GreAdapter: RecyclerView.Adapter<GreViewHolder> {
     val dataPosition = uiPosition;
     val choices: ArrayList<String> = ArrayList();
 
-    val actualGreMeaning: String = getItem(dataPosition)!!.greMeaning;
+    val actualGreMeaning: String = getItem(dataPosition).greMeaning;
 
     choices.add(actualGreMeaning);
 
@@ -44,21 +46,22 @@ class GreAdapter: RecyclerView.Adapter<GreViewHolder> {
       choices.add(randomMeanings[r3]);
     }else{
       val r1 = Random.nextInt(itemCount);
-      choices.add(getItem(r1)!!.greMeaning);
+      choices.add(getItem(r1).greMeaning);
 
       val r2 = Random.nextInt(itemCount);
-      choices.add(getItem(r2)!!.greMeaning);
+      choices.add(getItem(r2).greMeaning);
 
       val r3 = Random.nextInt(itemCount);
-      choices.add(getItem(r3)!!.greMeaning);
+      choices.add(getItem(r3).greMeaning);
 
     }
 
     Collections.shuffle(choices);
 
     val currentPageNumber: String = ( (dataPosition+1).toString()+" / " + itemCount.toString());
-    holder.bindView(getItem(dataPosition)!!, choices, actualGreMeaning,
-      currentPageNumber, onSelectingWrongMeaning);
+    holder.bindView(
+      getItem(dataPosition), choices, actualGreMeaning,
+      currentPageNumber, onSelectingWrongMeaning, shouldShowHint);
   }
 
   private fun getItem(dataPosition: Int): GreModel {

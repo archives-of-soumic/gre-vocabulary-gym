@@ -15,6 +15,7 @@ class GreViewHolder: RecyclerView.ViewHolder {
   private var greMeaning: TextView;
   private var grePartOfSpeech: TextView;
   private var greExample: TextView;
+  private var reveal: TextView
 
   private var questionContainer: ConstraintLayout;
   private var solutionContainer: ConstraintLayout;
@@ -35,6 +36,7 @@ class GreViewHolder: RecyclerView.ViewHolder {
     this.greMeaning = itemView.findViewById(R.id.greMeaning);
     this.greExample = itemView.findViewById(R.id.greExample);
     this.grePartOfSpeech = itemView.findViewById(R.id.grePartOfSpeech);
+    this.reveal = itemView.findViewById(R.id.show)
 
     this.questionContainer = itemView.findViewById(R.id.questionContainer);
     this.solutionContainer = itemView.findViewById(R.id.solutionContainer);
@@ -51,7 +53,7 @@ class GreViewHolder: RecyclerView.ViewHolder {
   }
 
   fun bindView(greModel: GreModel, choice: ArrayList<String>, actualGreMeaning: String,
-               currPageNumber: String, onSelectingWrongMeaning: (Int) -> Unit) {
+               currPageNumber: String, onSelectingWrongMeaning: (Int) -> Unit, showHint: Boolean = false) {
     this.pageNumber.text = currPageNumber;
     this.greWord.text = greModel.greWord;
     this.greMeaning.text = greModel.greMeaning;
@@ -76,27 +78,38 @@ class GreViewHolder: RecyclerView.ViewHolder {
 
     this.submit.setOnClickListener{  submitTextView ->
       val checkedRadioButtonId = radioGroup.checkedRadioButtonId;
-      val radioButton: RadioButton = itemView.findViewById(checkedRadioButtonId);
-      val selectedMeaning: String = radioButton.text.toString();
+      val _radioButton: RadioButton? = itemView.findViewById(checkedRadioButtonId);
+      if(_radioButton != null) {
+        val radioButton: RadioButton = _radioButton!! // itemView.findViewById(checkedRadioButtonId);
+        val selectedMeaning: String = radioButton.text.toString();
 
-      if( actualGreMeaning.equals(selectedMeaning) ) {
-        if(greModel.isCorrect == null) {
-          greModel.isCorrect = true;
-          changeGreWordColor(greModel = greModel);
+        if( actualGreMeaning.equals(selectedMeaning) ) {
+          if(greModel.isCorrect == null) {
+            greModel.isCorrect = true;
+            changeGreWordColor(greModel = greModel);
+          }
+          solutionContainer.visibility = View.VISIBLE;
+          val greenColor = getColor(R.color.colorPrimary);
+          radioButton.setBackgroundColor(greenColor);
+        }else{
+          if(greModel.isCorrect == null) {
+            greModel.isCorrect = false;
+            changeGreWordColor(greModel = greModel);
+            onSelectingWrongMeaning.invoke(greModel.pk);
+          }
+          val redColor = getColor(R.color.lightRed);
+          radioButton.setBackgroundColor(redColor);
         }
-        solutionContainer.visibility = View.VISIBLE;
-        val greenColor = getColor(R.color.colorPrimary);
-        radioButton.setBackgroundColor(greenColor);
-      }else{
-        if(greModel.isCorrect == null) {
-          greModel.isCorrect = false;
-          changeGreWordColor(greModel = greModel);
-          onSelectingWrongMeaning.invoke(greModel.pk);
-        }
-        val redColor = getColor(R.color.lightRed);
-        radioButton.setBackgroundColor(redColor);
       }
     };
+
+    if(showHint == false) {
+      questionContainer.visibility = View.INVISIBLE
+      reveal.setOnClickListener {
+        questionContainer.visibility = View.VISIBLE
+        radioGroup.visibility = View.VISIBLE
+      }
+    }
   }
 
   private fun getColor(colorResId: Int): Int {

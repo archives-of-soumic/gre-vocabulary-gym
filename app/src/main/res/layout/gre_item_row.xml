@@ -17,6 +17,22 @@
     app:layout_constraintTop_toTopOf="parent"
     android:padding="@dimen/padding_regular"
     />
+
+  <TextView
+    android:id="@+id/show"
+    android:text="Show"
+    android:fontFamily="@font/main"
+    android:textSize="@dimen/textSizePrimary"
+    android:textColor="@color/solidBlack"
+    android:background="@color/colorRadioButton"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:padding="@dimen/padding_regular"
+    />
+
   <TextView
     android:id="@+id/greWord"
     android:text="Foo"
