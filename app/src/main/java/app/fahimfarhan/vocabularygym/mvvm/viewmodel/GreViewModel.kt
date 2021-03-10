@@ -35,7 +35,9 @@ class GreViewModel: AndroidViewModel {
 
   fun getGreWords(): List<GreModel> {
     this.failedGreWords.clear()
-    return greRepository.getGreWordsWith(initialChars, difficultyLevels)
+    val list = greRepository.getGreWordsWith(initialChars, difficultyLevels)
+    N = list.size
+    return list
   }
 
 // -------- Pagination version -------
