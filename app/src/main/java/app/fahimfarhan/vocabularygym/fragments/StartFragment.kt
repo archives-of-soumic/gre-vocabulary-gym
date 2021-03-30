@@ -14,6 +14,7 @@ import app.fahimfarhan.vocabularygym.mvvm.viewmodel.GreViewModel
 import app.fahimfarhan.vocabularygym.utilities.Gizmos
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_start.*
+import java.lang.StringBuilder
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -120,6 +121,35 @@ class StartFragment: Fragment {
   private fun initInitialCharacters() {
     initialChars.clear();
     input = input.toLowerCase(Locale.getDefault());
+
+    var isRangedQuery: Boolean = false
+    var ranges = input.split(" ")
+    isRangedQuery = (ranges.size > 1);
+    if(!isRangedQuery) {
+      addAll(input)
+    }else{
+      for(range in ranges) {
+        Log.e(TAG, range);
+        val ithRange = range.split("-");
+        if(ithRange.size == 1 ) {
+          addAll(ithRange[0])
+        }else if(ithRange.size == 2){
+          val start: Char = ithRange[0][0]
+          val end: Char = ithRange[1][0]
+          if(end >= start) {
+            val rangedInput = StringBuilder()
+            for(i in start..end) {
+              rangedInput.append(i)
+            }
+            addAll(rangedInput.toString())
+          }
+        }
+      }
+    }
+
+  }
+
+  private fun addAll(input: String) {
     for(ch: Char in input) {
       if( (ch >= 'a') && (ch <= 'z') ) {
         val i: Int = ch - 'a';

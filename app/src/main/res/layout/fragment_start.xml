@@ -44,6 +44,7 @@
   <EditText
     android:id="@+id/editText"
     android:fontFamily="@font/main"
+    android:hint="input formats: ACX fot a,c,x words. A-D for A,B,C,D words"
     android:textColor="@color/solidBlack"
     app:layout_constraintTop_toBottomOf="@id/advanced"
     android:layout_width="match_parent"

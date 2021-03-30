@@ -74,6 +74,7 @@ class GreAdapter: RecyclerView.Adapter<GreViewHolder> {
 
   fun submit(greWords: List<GreModel>) {
     this.allGreWords.addAll(greWords)
+    Collections.shuffle(this.allGreWords)
     notifyDataSetChanged()
   }
 }
